@@ -1,11 +1,15 @@
 {{- /* Sélecteur de skin, affiché seulement s'il y a plusieurs skins. Caché tant que js/skin.js ne l'a pas activé. */ -}}
-{{- $skins := (partialCached "skins.html" . "skins").list }}
+{{- $all := partialCached "skins.html" . "skins" }}
+{{- $skins := $all.list }}
 {{- if gt (len $skins) 1 }}
 <p class="skin-switcher" id="skin-switcher" hidden>
   <label for="skin-select">Apparence du site</label>
   <select id="skin-select">
     {{- range $skins }}
     <option value="{{ .name }}">{{ .label }}</option>
+    {{- end }}
+    {{- if ne $all.random "off" }}
+    <option value="random">Au hasard à chaque page</option>
     {{- end }}
   </select>
 </p>

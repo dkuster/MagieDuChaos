@@ -25,11 +25,13 @@ hugo --gc --minify               # build de production dans public/
 
 ## Thèmes (skins)
 
-Les skins chargés sont listés par `theme` dans `hugo.toml` (chacun charge le socle `base` via son propre `hugo.toml`). Le build produit un CSS complet par skin, et le visiteur choisit l'apparence dans le pied de page (« Apparence du site »). Son choix est mémorisé dans son navigateur (`localStorage`, clé `magieduchaos-skin`) : aucun cookie, rien n'est envoyé au serveur.
+Les skins chargés sont listés par `theme` dans `hugo.toml` (chacun charge le socle `base` via son propre `hugo.toml`). Le build produit un CSS complet par skin, et le visiteur choisit l'apparence dans le pied de page (« Apparence du site »). Son choix est mémorisé dans son navigateur (`localStorage`, clé `magieduchaos-apparence`) : aucun cookie, rien n'est envoyé au serveur.
 
 - `params.defaultSkin` fixe le skin affiché à la première visite et pour les visiteurs sans JavaScript (le sélecteur reste alors caché).
 - Le skin est choisi par un petit script en ligne dans `<head>` (`themes/base/assets/js/skin.js`) avant le premier affichage : pas de flash de l'autre skin en changeant de page. Le choix se propage aux autres onglets ouverts.
-- Avec un seul skin (`hugo --theme kawaii`), le site est construit comme avant, sans sélecteur.
+- `params.randomSkin` active le mode « au hasard » : un skin différent est tiré au sort à chaque changement de page (jamais deux fois de suite le même). `"off"` le désactive, `"option"` l'ajoute au sélecteur (« Au hasard à chaque page »), `"default"` l'ajoute et l'active pour les nouveaux visiteurs, qui peuvent toujours choisir un skin fixe. Le mode est mémorisé comme un choix ordinaire (valeur `random`) ; le dernier skin affiché est retenu dans `sessionStorage` pour éviter les répétitions.
+- Pour remettre tous les visiteurs sur le réglage du site (après un changement de `defaultSkin` ou `randomSkin`), changer `KEY` dans `skin.js` et ajouter l'ancienne clé à `OLD_KEYS`, qui est effacée chez les visiteurs. La clé est passée de `magieduchaos-skin` à `magieduchaos-apparence` lors de l'activation du mode au hasard par défaut.
+- Avec un seul skin (`hugo --theme kawaii`), le site est construit comme avant, sans sélecteur ni mode au hasard.
 
 Un skin contient :
 

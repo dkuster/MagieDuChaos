@@ -2,7 +2,8 @@
   Skins chargés pour ce build : chacun se déclare dans son hugo.toml, section [params.skins.<nom>].
   Pour chaque skin, un CSS complet est assemblé : tokens du socle, tokens du skin, base.css, skin.css,
   plus une règle qui n'affiche ses ornements que lorsque <html data-skin="<nom>">.
-  Renvoie dict "list" (triée par weight) et "default" (nom du skin par défaut).
+  Renvoie dict "list" (triée par weight), "default" (nom du skin par défaut) et "random"
+  (mode « au hasard » : off, option ou default ; toujours off avec un seul skin).
   À appeler avec partialCached "skins.html" . "skins" : le résultat est le même pour tout le site.
 */ -}}
 {{- $list := slice }}
@@ -33,4 +34,7 @@
 {{- $wanted := site.Params.defaultSkin }}
 {{- range $list }}{{ if eq .name $wanted }}{{ $default = .name }}{{ end }}{{ end }}
 {{- if and $wanted (ne $default $wanted) }}{{ warnf "defaultSkin %q n'est pas chargé : %q utilisé à la place" $wanted $default }}{{ end }}
-{{- return dict "list" $list "default" $default }}
+{{- $random := site.Params.randomSkin | default "off" | string | lower }}
+{{- if not (in (slice "off" "option" "default") $random) }}{{ warnf "randomSkin %q inconnu (off, option ou default) : off utilisé" $random }}{{ $random = "off" }}{{ end }}
+{{- if lt (len $list) 2 }}{{ $random = "off" }}{{ end }}
+{{- return dict "list" $list "default" $default "random" $random }}

@@ -19,6 +19,12 @@ theme = ["cthulhu", "chaos-dark", "kawaii" ]
   description = "Site officiel francophone des Illuminates of Thanateros"
   # Skin affiché par défaut, et pour les visiteurs sans JavaScript (doit figurer dans theme)
   defaultSkin = "chaos-dark"
+  # Apparence tirée au sort à chaque changement de page (jamais deux fois de suite la même) :
+  #   "off"     désactivé
+  #   "option"  proposé dans le sélecteur (« Au hasard à chaque page »), choix du visiteur
+  #   "default" proposé, et actif d'office pour les nouveaux visiteurs
+  # Sans effet avec un seul skin ; les visiteurs sans JavaScript voient toujours defaultSkin.
+  randomSkin = "default"
   # Formulaires Tally : ID seul (PR1YoP) ou URL complète (https://tally.so/r/PR1YoP)
   [params.tally]
     renseignements = "PR1YoP"

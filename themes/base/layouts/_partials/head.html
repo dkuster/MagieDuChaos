@@ -18,7 +18,7 @@
   {{- $data = merge $data (dict .name (dict "href" .href "integrity" .integrity "themecolor" .themecolor "colorscheme" .colorscheme "preload" .preload)) }}
   {{- if eq .name $skins.default }}{{ $default = . }}{{ end }}
 {{- end }}
-{{ with resources.Get "js/skin.js" | minify }}<script data-skins="{{ $data | jsonify }}" data-default="{{ $skins.default }}">{{ .Content | safeJS }}</script>{{ end }}
+{{ with resources.Get "js/skin.js" | minify }}<script data-skins="{{ $data | jsonify }}" data-default="{{ $skins.default }}" data-random="{{ $skins.random }}">{{ .Content | safeJS }}</script>{{ end }}
 <noscript>
   <meta name="color-scheme" content="{{ $default.colorscheme }}">
   {{ with $default.themecolor }}<meta name="theme-color" content="{{ . }}">{{ end }}
