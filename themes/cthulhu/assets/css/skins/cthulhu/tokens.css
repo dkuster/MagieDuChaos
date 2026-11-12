@@ -1,0 +1,25 @@
+/* Skin cthulhu — valeurs du contrat de variables (chargé après themes/base/assets/css/tokens.css, qu'il complète) */
+:root {
+  color-scheme: dark;
+  --color-bg: #050c0d;          /* noir des abysses */
+  --color-surface: #0b1819;
+  --color-text: #c6d4c9;        /* écume pâle */
+  --color-text-muted: #84998f;
+  --color-heading: #dfe6c9;     /* os blanchi par la mer */
+  --color-accent: #3fbfa0;      /* vert-de-mer phosphorescent */
+  --color-accent-2: #c9b46a;    /* laiton terni : focus, détails */
+  --color-link: #74d8bc;
+  --color-border: #173032;
+  --font-display: "IM Fell English SC", "IM Fell English", Georgia, serif;
+  --font-heading: "IM Fell English", Georgia, serif;
+  --font-body: "Crimson Pro", Georgia, serif;
+  --radius: 3px;
+  --shadow: 0 3px 14px rgb(0 0 0 / .6);
+  --measure: 42rem;
+  --wide: 68rem;
+  /* Variables propres au skin */
+  --abyss-2: #0d2122;           /* fond du pied de page, couleur des tentacules qui en sortent */
+  --brass: #c9b46a;
+  --glow: 0 0 16px rgb(63 191 160 / .35);
+  --glow-strong: 0 0 26px rgb(63 191 160 / .6);
+}

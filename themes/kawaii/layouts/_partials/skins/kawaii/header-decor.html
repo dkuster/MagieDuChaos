@@ -1,0 +1,4 @@
+<div class="sparkles" aria-hidden="true">
+  {{- range seq 6 }}{{ partial "skins/kawaii/sparkle.html" "sparkle" }}{{ end }}
+</div>
+{{ partial "skins/kawaii/kawaii-star.html" (dict "class" "kawaii-halo" "face" false) }}

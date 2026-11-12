@@ -1,0 +1,36 @@
+{{- /*
+  Skins chargés pour ce build : chacun se déclare dans son hugo.toml, section [params.skins.<nom>].
+  Pour chaque skin, un CSS complet est assemblé : tokens du socle, tokens du skin, base.css, skin.css,
+  plus une règle qui n'affiche ses ornements que lorsque <html data-skin="<nom>">.
+  Renvoie dict "list" (triée par weight) et "default" (nom du skin par défaut).
+  À appeler avec partialCached "skins.html" . "skins" : le résultat est le même pour tout le site.
+*/ -}}
+{{- $list := slice }}
+{{- $declared := site.Params.skins | default dict }}
+{{- if not $declared }}{{ $declared = dict "base" (dict "label" "Base" "weight" 0) }}{{ end }}
+{{- range $name, $p := $declared }}
+  {{- $css := slice (resources.Get "css/tokens.css") }}
+  {{- with resources.Get (printf "css/skins/%s/tokens.css" $name) }}{{ $css = $css | append . }}{{ end }}
+  {{- $css = $css | append (resources.Get "css/base.css") }}
+  {{- with resources.Get (printf "css/skins/%s/skin.css" $name) }}{{ $css = $css | append . }}{{ end }}
+  {{- $decor := printf "[data-skin=%q] [data-skin-decor=%q] { display: contents; }\n" $name $name }}
+  {{- $css = $css | append (resources.FromString (printf "css/skins/%s/_decor.css" $name) $decor) }}
+  {{- $bundle := $css | resources.Concat (printf "css/%s.css" $name) | minify | fingerprint }}
+  {{- $preload := slice }}
+  {{- range (index $p "preload") }}{{ $preload = $preload | append (. | relURL) }}{{ end }}
+  {{- $list = $list | append (dict
+      "name" $name
+      "label" (index $p "label" | default $name)
+      "weight" (index $p "weight" | default 100)
+      "themecolor" (index $p "themecolor" | default "")
+      "colorscheme" (index $p "colorscheme" | default "light dark")
+      "preload" $preload
+      "href" $bundle.RelPermalink
+      "integrity" $bundle.Data.Integrity) }}
+{{- end }}
+{{- $list = sort $list "weight" }}
+{{- $default := (index $list 0).name }}
+{{- $wanted := site.Params.defaultSkin }}
+{{- range $list }}{{ if eq .name $wanted }}{{ $default = .name }}{{ end }}{{ end }}
+{{- if and $wanted (ne $default $wanted) }}{{ warnf "defaultSkin %q n'est pas chargé : %q utilisé à la place" $wanted $default }}{{ end }}
+{{- return dict "list" $list "default" $default }}

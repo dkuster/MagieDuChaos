@@ -1,4 +1,4 @@
-/* Skin kawaii — valeurs du contrat de variables (remplace themes/base/assets/css/tokens.css) */
+/* Skin kawaii — valeurs du contrat de variables (chargé après themes/base/assets/css/tokens.css, qu'il complète) */
 :root {
   color-scheme: light;
   --color-bg: #fff6fb;          /* rose barbe à papa très clair */

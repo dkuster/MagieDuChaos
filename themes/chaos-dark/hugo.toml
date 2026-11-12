@@ -1,2 +1,10 @@
 # Ce skin s'appuie sur le socle commun : --theme chaos-dark suffit.
 theme = "base"
+
+# Déclaration du skin, fusionnée dans les params du site (voir base/layouts/_partials/skins.html)
+[params.skins.chaos-dark]
+  label = "Chaos (sombre)"      # nom affiché dans le sélecteur
+  weight = 10                   # ordre dans le sélecteur ; le plus léger sert de défaut si defaultSkin manque
+  themeColor = "#0b0910"        # couleur de la barre d'adresse sur mobile
+  colorScheme = "dark"
+  preload = ["fonts/eb-garamond-latin-wght-normal.woff2", "fonts/cinzel-latin-wght-normal.woff2"]

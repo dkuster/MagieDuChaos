@@ -7,7 +7,7 @@ Il remplace l'ancien WordPress `burgundi.thanateros.live`, dont les URL sont con
 
 ```sh
 hugo server                      # http://localhost:1313
-hugo server --theme kawaii       # prévisualiser un autre skin
+hugo server --theme kawaii       # un seul skin, sans sélecteur
 hugo --gc --minify               # build de production dans public/
 ```
 
@@ -20,24 +20,36 @@ hugo --gc --minify               # build de production dans public/
 | `content/types/`, `content/sources/` | les deux axes de catégories (type d'écrit, source) |
 | `static/files/` | PDF téléchargeables |
 | `themes/base/` | socle : gabarits HTML et CSS de structure, qui n'utilise que des variables |
-| `themes/<skin>/` | habillages interchangeables : `chaos-dark` (par défaut), `kawaii` |
+| `themes/<skin>/` | habillages interchangeables : `chaos-dark` (par défaut), `kawaii`, `cthulhu` |
 | `tools/wp2hugo/` | conversion ponctuelle depuis le dump WordPress |
 
 ## Thèmes (skins)
 
-Le skin actif est fixé par `theme` dans `hugo.toml` (ou `--theme <skin>` au build ; chaque skin charge le socle `base` via son propre `hugo.toml`). Un skin ne contient que :
+Les skins chargés sont listés par `theme` dans `hugo.toml` (chacun charge le socle `base` via son propre `hugo.toml`). Le build produit un CSS complet par skin, et le visiteur choisit l'apparence dans le pied de page (« Apparence du site »). Son choix est mémorisé dans son navigateur (`localStorage`, clé `magieduchaos-skin`) : aucun cookie, rien n'est envoyé au serveur.
+
+- `params.defaultSkin` fixe le skin affiché à la première visite et pour les visiteurs sans JavaScript (le sélecteur reste alors caché).
+- Le skin est choisi par un petit script en ligne dans `<head>` (`themes/base/assets/js/skin.js`) avant le premier affichage : pas de flash de l'autre skin en changeant de page. Le choix se propage aux autres onglets ouverts.
+- Avec un seul skin (`hugo --theme kawaii`), le site est construit comme avant, sans sélecteur.
+
+Un skin contient :
 
 | Fichier | Rôle |
 | --- | --- |
-| `hugo.toml` | une ligne, `theme = "base"`, pour charger le socle |
-| `assets/css/tokens.css` | valeurs des variables (couleurs, polices, rayons…) |
-| `assets/css/skin.css` | habillage optionnel, chargé après `base.css` |
-| `layouts/_partials/skin/*.html` | points d'accroche : `head`, `header-decor`, `divider`, `footer-decor` |
+| `hugo.toml` | `theme = "base"` et la déclaration `[params.skins.<nom>]` : `label` (nom dans le sélecteur), `weight` (ordre), `themeColor`, `colorScheme`, `preload` (polices à précharger) |
+| `assets/css/skins/<nom>/tokens.css` | valeurs des variables (couleurs, polices, rayons…) |
+| `assets/css/skins/<nom>/skin.css` | habillage optionnel, chargé après `base.css` |
+| `layouts/_partials/skins/<nom>/*.html` | ornements : `header-decor`, `divider`, `footer-decor` (à défaut, ceux de `base/layouts/_partials/skins/_default/`), plus ses propres partials |
 | `static/` | fichiers propres au skin (polices…) |
+
+Tous les fichiers d'un skin sont rangés sous son nom, pour que plusieurs skins cohabitent dans un même build. Les ornements de chaque skin sont présents dans le HTML ; seul celui du skin actif est affiché.
+
+Ajouter un skin : créer `themes/<nom>/` sur ce modèle, puis l'ajouter à la liste `theme` de `hugo.toml`.
 
 `chaos-dark` : fond noir violacé, accents violet et or, étoile du chaos en filigrane et dans les séparateurs, polices Cinzel et EB Garamond auto-hébergées (licence OFL, aucun appel externe).
 
 `kawaii` : fond rose pâle à pois, palette arc-en-ciel pastel, étoile du chaos multicolore derrière le logo et étincelles animées, menu en pastilles, cœur dans les séparateurs, pied de page festonné avec une étoile du chaos souriante. Polices Fredoka et Nunito, auto-hébergées elles aussi.
+
+`cthulhu` : abysses vert-de-mer et laiton terni, étoile du chaos tentaculaire avec un œil qui cligne en filigrane, bulles dans l'en-tête, tentacules qui émergent du pied de page, polices IM Fell English et Crimson Pro auto-hébergées (licence OFL). Les tracés des tentacules sont générés par calcul : les régénérer plutôt que les retoucher à la main. Les animations sont coupées si le visiteur a demandé à réduire les animations.
 
 ## Écrire un article
 

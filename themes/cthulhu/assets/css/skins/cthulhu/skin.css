@@ -1,0 +1,114 @@
+/* Skin cthulhu — habillage. La structure reste dans base.css. */
+
+/* Polices auto-hébergées (SIL OFL, voir static/fonts/) : aucun appel à un service tiers */
+@font-face { font-family: "IM Fell English SC"; src: url("../fonts/im-fell-english-sc-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "IM Fell English"; src: url("../fonts/im-fell-english-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "IM Fell English"; src: url("../fonts/im-fell-english-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Crimson Pro"; src: url("../fonts/crimson-pro-latin-wght-normal.woff2") format("woff2"); font-weight: 200 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Crimson Pro"; src: url("../fonts/crimson-pro-latin-wght-italic.woff2") format("woff2"); font-weight: 200 900; font-style: italic; font-display: swap; }
+
+/* Fond : lumière qui tombe de la surface en rais obliques, puis l'abysse */
+body {
+  font-size: 1.2rem;
+  background:
+    repeating-linear-gradient(100deg, transparent 0 90px, rgb(116 216 188 / .025) 90px 140px, transparent 140px 260px),
+    radial-gradient(ellipse 90% 50% at 50% -10%, rgb(63 191 160 / .17), transparent 70%),
+    radial-gradient(ellipse 70% 40% at 50% 115%, rgb(201 180 106 / .05), transparent 70%),
+    linear-gradient(180deg, #0a1a1b 0%, var(--color-bg) 45%);
+  background-attachment: fixed;
+}
+::selection { background: rgb(63 191 160 / .45); color: #fff; }
+html { scrollbar-color: var(--color-border) var(--color-bg); }
+
+h1, h2, h3 { font-weight: 400; letter-spacing: .02em; }
+h1 { text-shadow: 0 0 22px rgb(63 191 160 / .3); }
+h4, h5 { font-family: var(--font-body); font-weight: 700; }
+strong { color: var(--color-heading); font-weight: 600; }
+a { text-decoration-color: rgb(116 216 188 / .4); transition: color .2s, text-shadow .2s; }
+a:hover { color: var(--color-heading); text-decoration-style: wavy; text-decoration-color: var(--color-accent); text-shadow: var(--glow); }
+
+/* En-tête : étoile du chaos tentaculaire en filigrane, bulles qui remontent */
+.site-header { position: relative; overflow: hidden; isolation: isolate; border-bottom: 0; }
+.site-header::after { content: ""; position: absolute; left: 8%; right: 8%; bottom: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--color-accent) 30%, var(--brass) 50%, var(--color-accent) 70%, transparent); opacity: .5; }
+.cthulhu-halo { position: absolute; z-index: -1; top: -95px; left: 50%; width: 480px; height: 480px; margin-left: -240px; color: var(--color-accent); opacity: .12; pointer-events: none; animation: abyss-turn 300s linear infinite; }
+.cthulhu-halo .eye { opacity: .9; }
+.site-logo { filter: drop-shadow(0 0 1px rgb(220 240 230 / .8)) drop-shadow(0 0 14px rgb(63 191 160 / .7)); }
+.site-brand:hover .site-logo { filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 22px rgb(63 191 160 / 1)); }
+.site-title { letter-spacing: .08em; text-shadow: var(--glow), 0 2px 0 rgb(0 0 0 / .6); animation: non-euclidean 16s ease-in-out infinite; }
+.site-tagline { font-family: var(--font-heading); font-style: italic; letter-spacing: .03em; }
+.site-nav a { font-family: var(--font-display); font-size: 1.02rem; letter-spacing: .1em; }
+.site-nav a[aria-current="page"], .site-nav a:hover { border-bottom-color: transparent; text-decoration: underline wavy var(--color-accent) 1px; text-underline-offset: .35em; text-shadow: var(--glow); }
+
+.bubbles { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.bubbles span { position: absolute; bottom: -12px; width: 7px; height: 7px; border-radius: 50%; border: 1px solid rgb(116 216 188 / .45); background: radial-gradient(circle at 30% 30%, rgb(255 255 255 / .35), transparent 60%); opacity: 0; animation: bubble 9s ease-in infinite; }
+.bubbles span:nth-child(1) { left: 9%;  animation-delay: 0s; }
+.bubbles span:nth-child(2) { left: 16%; width: 4px; height: 4px; animation-delay: 3.1s; animation-duration: 7s; }
+.bubbles span:nth-child(3) { left: 24%; width: 10px; height: 10px; animation-delay: 5.6s; animation-duration: 11s; }
+.bubbles span:nth-child(4) { left: 33%; width: 5px; height: 5px; animation-delay: 1.8s; }
+.bubbles span:nth-child(5) { left: 68%; width: 5px; height: 5px; animation-delay: 4.4s; animation-duration: 8s; }
+.bubbles span:nth-child(6) { left: 75%; width: 9px; height: 9px; animation-delay: .9s; animation-duration: 12s; }
+.bubbles span:nth-child(7) { left: 83%; width: 4px; height: 4px; animation-delay: 6.3s; }
+.bubbles span:nth-child(8) { left: 90%; animation-delay: 2.5s; animation-duration: 10s; }
+.bubbles span:nth-child(9) { left: 52%; width: 4px; height: 4px; animation-delay: 7.7s; animation-duration: 13s; }
+
+@keyframes abyss-turn { to { transform: rotate(360deg); } }
+@keyframes bubble { 0% { transform: translate(0, 0); opacity: 0; } 10% { opacity: .9; } 50% { transform: translate(6px, -130px); } 90% { opacity: .6; } 100% { transform: translate(-4px, -280px); opacity: 0; } }
+/* Une géométrie qui n'est pas tout à fait la nôtre */
+@keyframes non-euclidean { 0%, 100% { transform: none; } 45% { transform: skewX(-2.5deg) scaleY(1.03); } 55% { transform: skewX(1.5deg) scaleY(.99); } }
+
+/* Œil à pupille fendue (séparateur, centre de l'étoile) : cligne de temps en temps */
+.eye-socket { fill: var(--color-surface); stroke: currentColor; stroke-width: 2.5; }
+.eye { transform-box: fill-box; transform-origin: center; animation: blink 7s infinite; }
+.eye-white { fill: var(--brass); }
+.eye-pupil { fill: var(--color-bg); }
+.suckers { fill: var(--color-bg); opacity: .55; }
+@keyframes blink { 0%, 93%, 100% { transform: scaleY(1); } 95.5% { transform: scaleY(.08); } }
+
+/* Séparateur : deux ondes et un œil */
+.cthulhu-divider { max-width: var(--measure); margin: 3.5rem auto; color: var(--color-accent); }
+.cthulhu-divider svg { display: block; width: 100%; max-width: 26rem; height: auto; margin: 0 auto; overflow: visible; }
+.cthulhu-divider .wave { fill: none; stroke: var(--color-accent); stroke-width: 1.2; stroke-linecap: round; opacity: .55; }
+.cthulhu-divider .eye { filter: drop-shadow(0 0 4px rgb(201 180 106 / .6)); }
+
+/* Contenu */
+.page-header h1 { margin-bottom: .25rem; }
+.eyebrow { font-family: var(--font-display); color: var(--brass); letter-spacing: .14em; }
+.prose h2 { border-bottom: 1px solid var(--color-border); padding-bottom: .2rem; }
+.prose blockquote { position: relative; border-left: 2px solid var(--brass); border-radius: 0; background: linear-gradient(90deg, rgb(201 180 106 / .08), transparent 85%); font-family: var(--font-heading); font-style: italic; padding: .75rem 1.25rem .75rem 2.75rem; }
+.prose blockquote::before { content: "\201C"; position: absolute; left: .6rem; top: -.15rem; font-family: var(--font-display); font-size: 3.4rem; line-height: 1; color: var(--brass); opacity: .6; }
+.prose figure img, .featured-image img { box-shadow: var(--shadow); }
+.prose hr { border: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--color-accent), transparent); margin: 2.5rem 0; opacity: .6; }
+.prose ::marker { color: var(--color-accent); }
+
+/* Cartes d'articles : comme vues à travers l'eau, nettes au survol */
+.post-card { border: 1px solid var(--color-border); background: linear-gradient(180deg, var(--color-surface), #071112); transition: border-color .3s, box-shadow .3s, transform .3s; }
+.post-card:hover { border-color: rgb(63 191 160 / .55); box-shadow: var(--shadow), var(--glow); transform: translateY(-3px); }
+.post-card-image img { filter: saturate(.55) sepia(.2) hue-rotate(115deg) brightness(.8); transition: filter .4s; }
+.post-card:hover .post-card-image img { filter: none; }
+.post-card-title a:hover { color: var(--color-link); }
+.year-group h2, .latest h2 { font-family: var(--font-display); color: var(--brass); letter-spacing: .06em; }
+.more a { font-family: var(--font-display); text-decoration: none; padding: .35rem 1rem; border: 1px solid var(--brass); color: var(--brass); letter-spacing: .08em; }
+.more a:hover { background: rgb(201 180 106 / .12); color: var(--color-heading); text-decoration: none; }
+
+/* Formulaires Tally : panneau clair pour rester lisible quel que soit le thème du formulaire */
+.tally-form { background: #e4ebe2; color: #10201f; padding: 1.25rem; border-radius: var(--radius); box-shadow: var(--glow); }
+.form-placeholder { border-color: var(--color-accent); }
+
+/* Pied de page : des tentacules en émergent */
+.site-footer { position: relative; margin-top: 9rem; border-top: 0; background: var(--abyss-2); box-shadow: 0 0 30px rgb(63 191 160 / .07); }
+.footer-tentacles { position: absolute; left: 50%; bottom: calc(100% - 3px); width: min(94vw, 600px); height: auto; transform: translateX(-50%); fill: var(--abyss-2); filter: drop-shadow(0 -1px 0 rgb(63 191 160 / .25)) drop-shadow(0 0 10px rgb(63 191 160 / .12)); pointer-events: none; }
+.footer-tentacles circle { fill: #1f3d3e; }
+.footer-tentacles .tentacle { transform-box: fill-box; transform-origin: 50% 100%; animation: sway 8s ease-in-out infinite alternate; }
+.footer-tentacles .tentacle:nth-child(2) { animation-duration: 10s; animation-delay: -3s; }
+.footer-tentacles .tentacle:nth-child(3) { animation-duration: 12s; animation-delay: -6s; }
+.footer-tentacles .tentacle:nth-child(4) { animation-duration: 9s; animation-delay: -2s; }
+.footer-tentacles .tentacle:nth-child(5) { animation-duration: 11s; animation-delay: -5s; }
+.site-footer h2 { font-family: var(--font-display); color: var(--brass); font-size: 1.1rem; letter-spacing: .1em; }
+.site-footer a:hover { color: var(--color-heading); }
+@keyframes sway { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .cthulhu-halo, .site-title, .bubbles span, .eye, .footer-tentacles .tentacle { animation: none; }
+  .bubbles { display: none; }
+  .post-card, .post-card:hover { transition: none; transform: none; }
+}

@@ -1,0 +1,15 @@
+{{- /*
+  Point d'accroche d'ornement (header-decor, divider, footer-decor) : rend la version de chaque skin
+  chargé, enveloppée dans data-skin-decor ; le CSS n'affiche que celle du skin actif.
+  Un skin sans sa propre version reçoit celle de skins/_default/.
+  Usage : partial "skin-decor.html" (dict "hook" "divider" "page" .)
+*/ -}}
+{{- $hook := .hook }}{{ $page := .page }}
+{{- range (partialCached "skins.html" $page "skins").list }}
+  {{- $name := .name }}
+  {{- $tpl := printf "skins/%s/%s.html" $name $hook }}
+  {{- if not (templates.Exists (printf "_partials/%s" $tpl)) }}{{ $tpl = printf "skins/_default/%s.html" $hook }}{{ end }}
+  {{- with partial $tpl $page | strings.TrimSpace }}
+<div class="skin-decor" data-skin-decor="{{ $name }}">{{ . | safeHTML }}</div>
+  {{- end }}
+{{- end }}

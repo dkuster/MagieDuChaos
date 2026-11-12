@@ -1,5 +1,5 @@
 /* Valeurs par défaut du contrat de variables.
-   Chaque skin fournit son propre css/tokens.css qui remplace ce fichier. */
+   Chaque skin fournit css/skins/<nom>/tokens.css, chargé juste après ce fichier. */
 :root {
   --color-bg: #ffffff;
   --color-surface: #f4f4f6;

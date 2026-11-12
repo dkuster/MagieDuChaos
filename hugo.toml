@@ -7,15 +7,18 @@ timeZone = "Europe/Zurich"
 enableRobotsTXT = true
 summaryLength = 45
 
-# Thème : le skin actif. Chaque skin charge lui-même le socle commun "base"
-# (voir themes/<skin>/hugo.toml). Se choisit ici, ou au build sans toucher ce fichier :
+# Skins chargés. Chacun se déclare (libellé, couleurs, polices) dans son propre hugo.toml
+# et charge le socle commun "base". Avec plusieurs skins, le visiteur choisit l'apparence
+# dans le pied de page ; son choix est mémorisé dans son navigateur (localStorage).
+# Build avec un seul skin, sans sélecteur :
 #   hugo --theme kawaii
-#   hugo --theme chaos-dark
 #   hugo --theme base                (socle seul, sans habillage)
-theme = "chaos-dark"
+theme = ["chaos-dark", "kawaii", "cthulhu"]
 
 [params]
   description = "Site officiel francophone des Illuminates of Thanateros"
+  # Skin affiché par défaut, et pour les visiteurs sans JavaScript (doit figurer dans theme)
+  defaultSkin = "chaos-dark"
   # Formulaires Tally : ID seul (PR1YoP) ou URL complète (https://tally.so/r/PR1YoP)
   [params.tally]
     renseignements = "PR1YoP"

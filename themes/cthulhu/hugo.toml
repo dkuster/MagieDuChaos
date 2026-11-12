@@ -1,0 +1,10 @@
+# Ce skin s'appuie sur le socle commun : --theme cthulhu suffit.
+theme = "base"
+
+# Déclaration du skin, fusionnée dans les params du site (voir base/layouts/_partials/skins.html)
+[params.skins.cthulhu]
+  label = "Cthulhu (abysses)"   # nom affiché dans le sélecteur
+  weight = 30                   # ordre dans le sélecteur
+  themeColor = "#050c0d"        # couleur de la barre d'adresse sur mobile
+  colorScheme = "dark"
+  preload = ["fonts/crimson-pro-latin-wght-normal.woff2", "fonts/im-fell-english-sc-latin-400-normal.woff2"]

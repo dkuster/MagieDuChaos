@@ -8,9 +8,9 @@ types: ["Pratique"]
 sources: ["Fait maison"]
 ---
 
-C'est avec un grand plaisir que nous vous présentons la première version officielle en français du livre du pacte.
+C'est avec un grand plaisir que nous vous présentons la deuxième version officielle en français du livre du pacte.
 
-Ce livre représente l'organisation et les règles internes à l'IOT. Il est basé sur l'édition anglaise de 2014.
+Ce livre représente l'organisation et les règles internes à l'IOT.
 
 On y trouve en annexe le *Livre du novice* qui remplace le *Liber MMM* comme cursus officiel prérequis pour l'entrée dans l'IOT.
 

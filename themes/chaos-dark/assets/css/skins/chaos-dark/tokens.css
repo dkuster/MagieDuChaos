@@ -1,4 +1,4 @@
-/* Skin chaos-dark — valeurs du contrat de variables (remplace themes/base/assets/css/tokens.css) */
+/* Skin chaos-dark — valeurs du contrat de variables (chargé après themes/base/assets/css/tokens.css, qu'il complète) */
 :root {
   color-scheme: dark;
   --color-bg: #0b0910;          /* noir violacé */

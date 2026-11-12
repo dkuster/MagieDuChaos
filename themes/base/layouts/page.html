@@ -7,7 +7,7 @@
   {{ if eq .Section "posts" }}{{ partial "featured-image.html" . }}{{ end }}
   <div class="prose">{{ .Content }}</div>
   {{ if eq .Section "posts" }}
-    {{ partial "skin/divider.html" . }}
+    {{ partial "skin-decor.html" (dict "hook" "divider" "page" .) }}
     {{ $posts := where site.RegularPages "Section" "posts" }}
     <nav class="post-nav" aria-label="Articles voisins">
       {{ with first 1 (where $posts "Date" "lt" .Date).ByDate.Reverse }}{{ range . }}<a class="older" href="{{ .RelPermalink }}">← {{ .Title }}</a>{{ end }}{{ end }}

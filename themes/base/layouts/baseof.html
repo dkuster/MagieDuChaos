@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ site.Language.Locale | default "fr" }}">
+<html lang="{{ site.Language.Locale | default "fr" }}" data-skin="{{ (partialCached "skins.html" . "skins").default }}">
 <head>
   {{ partial "head.html" . }}
 </head>

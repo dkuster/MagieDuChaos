@@ -1,5 +1,5 @@
 <footer class="site-footer">
-  {{ partial "skin/footer-decor.html" . }}
+  {{ partial "skin-decor.html" (dict "hook" "footer-decor" "page" .) }}
   <div class="footer-grid">
     <section>
       <h2>Archives</h2>
@@ -21,5 +21,6 @@
       <p><a href="{{ "/carte-de-visite/" | relURL }}">Nous écrire</a> · <a href="{{ "/politique-de-confidentialite/" | relURL }}">Confidentialité</a> · <a href="{{ with site.GetPage "/posts" }}{{ with .OutputFormats.Get "rss" }}{{ .RelPermalink }}{{ end }}{{ end }}">RSS</a></p>
     </section>
   </div>
+  {{ partial "skin-switcher.html" . }}
   <p class="colophon">© {{ now.Year }} {{ site.Title }}</p>
 </footer>

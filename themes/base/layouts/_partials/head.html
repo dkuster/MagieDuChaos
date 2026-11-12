@@ -9,9 +9,18 @@
   <link rel="icon" type="image/png" href="{{ $ico.RelPermalink }}">
   <link rel="apple-touch-icon" href="{{ $apple.RelPermalink }}">
 {{ end }}
-{{/* Les variables (tokens) viennent du skin ; base.css ne contient que la structure */}}
-{{ $css := slice (resources.Get "css/tokens.css") (resources.Get "css/base.css") }}
-{{ with resources.Get "css/skin.css" }}{{ $css = $css | append . }}{{ end }}
-{{ $css = $css | resources.Concat "css/site.css" | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
-{{ partial "skin/head.html" . }}
+{{/* Skin : un CSS complet par skin (voir skins.html). js/skin.js, en ligne, choisit celui mémorisé
+     par le visiteur et l'écrit ici ; sans JavaScript, le <noscript> charge le skin par défaut. */}}
+{{- $skins := partialCached "skins.html" . "skins" }}
+{{- $data := dict }}
+{{- $default := dict }}
+{{- range $skins.list }}
+  {{- $data = merge $data (dict .name (dict "href" .href "integrity" .integrity "themecolor" .themecolor "colorscheme" .colorscheme "preload" .preload)) }}
+  {{- if eq .name $skins.default }}{{ $default = . }}{{ end }}
+{{- end }}
+{{ with resources.Get "js/skin.js" | minify }}<script data-skins="{{ $data | jsonify }}" data-default="{{ $skins.default }}">{{ .Content | safeJS }}</script>{{ end }}
+<noscript>
+  <meta name="color-scheme" content="{{ $default.colorscheme }}">
+  {{ with $default.themecolor }}<meta name="theme-color" content="{{ . }}">{{ end }}
+  <link rel="stylesheet" href="{{ $default.href }}" integrity="{{ $default.integrity }}">
+</noscript>

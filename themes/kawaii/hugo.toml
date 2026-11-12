@@ -1,2 +1,10 @@
 # Ce skin s'appuie sur le socle commun : --theme kawaii suffit.
 theme = "base"
+
+# Déclaration du skin, fusionnée dans les params du site (voir base/layouts/_partials/skins.html)
+[params.skins.kawaii]
+  label = "Licorne kawaii"      # nom affiché dans le sélecteur
+  weight = 20                   # ordre dans le sélecteur
+  themeColor = "#ffd3e6"        # couleur de la barre d'adresse sur mobile
+  colorScheme = "light"
+  preload = ["fonts/nunito-latin-wght-normal.woff2", "fonts/fredoka-latin-wght-normal.woff2"]

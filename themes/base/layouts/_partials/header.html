@@ -1,5 +1,5 @@
 <header class="site-header">
-  {{ partial "skin/header-decor.html" . }}
+  {{ partial "skin-decor.html" (dict "hook" "header-decor" "page" .) }}
   <a class="site-brand" href="{{ "/" | relURL }}">
     {{ with resources.Get "images/logo.png" }}{{ $l := .Resize "192x" }}<img class="site-logo" src="{{ $l.RelPermalink }}" width="96" height="{{ div (mul $l.Height 96) $l.Width }}" alt="">{{ end }}
     <span class="site-title">{{ site.Title }}</span>

@@ -45,7 +45,8 @@ jobs:
 
       - name: Construire le site
         # baseURL vient de hugo.toml (https://magieduchaos.org/).
-        # Pour un autre skin : ajouter par ex. --theme kawaii
+        # Skins chargés : theme dans hugo.toml (sélecteur dans le pied de page).
+        # Pour publier un seul skin, sans sélecteur : ajouter par ex. --theme kawaii
         run: hugo --gc --minify --cleanDestinationDir
 
       - name: Envoyer le site construit
