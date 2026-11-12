@@ -1,0 +1,7 @@
+{{ define "main" }}
+<header class="page-header">
+  <p class="eyebrow">{{ .Parent.Title }}</p>
+  <h1>{{ .Title }}</h1>
+</header>
+<div class="post-list">{{ range .Pages }}{{ partial "post-card.html" . }}{{ end }}</div>
+{{ end }}

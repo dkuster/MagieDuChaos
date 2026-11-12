@@ -1,0 +1,77 @@
+/* Skin chaos-dark — habillage. La structure reste dans base.css. */
+
+/* Polices auto-hébergées (SIL OFL, voir static/fonts/) : aucun appel à un service tiers */
+@font-face { font-family: "Cinzel"; src: url("../fonts/cinzel-latin-wght-normal.woff2") format("woff2"); font-weight: 400 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "EB Garamond"; src: url("../fonts/eb-garamond-latin-wght-normal.woff2") format("woff2"); font-weight: 400 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "EB Garamond"; src: url("../fonts/eb-garamond-latin-wght-italic.woff2") format("woff2"); font-weight: 400 800; font-style: italic; font-display: swap; }
+
+/* Fond : halo violet en haut, vignette sombre en bas */
+body {
+  font-size: 1.22rem;
+  background:
+    radial-gradient(ellipse 80% 45% at 50% -5%, rgb(157 92 255 / .16), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 85% 110%, rgb(224 168 79 / .06), transparent 70%),
+    var(--color-bg);
+  background-attachment: fixed;
+}
+::selection { background: var(--color-accent); color: #fff; }
+html { scrollbar-color: var(--color-border) var(--color-bg); }
+
+h1, h2, h3 { font-weight: 600; letter-spacing: .04em; }
+h1 { text-shadow: 0 0 24px rgb(157 92 255 / .35); }
+h4, h5 { font-family: var(--font-body); font-weight: 700; }
+a { transition: color .2s, text-shadow .2s; text-decoration-color: rgb(199 164 255 / .45); }
+a:hover { color: var(--color-heading); text-shadow: var(--glow); }
+strong { color: var(--color-heading); font-weight: 600; }
+
+/* En-tête : étoile du chaos en filigrane derrière le logo */
+.site-header { position: relative; overflow: hidden; isolation: isolate; border-bottom: 0; }
+.site-header::after { content: ""; position: absolute; left: 10%; right: 10%; bottom: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--color-accent), transparent); opacity: .6; }
+.chaos-halo { position: absolute; z-index: -1; top: -70px; left: 50%; width: 460px; height: 460px; margin-left: -230px; color: var(--color-accent); opacity: .13; pointer-events: none; animation: chaos-spin 240s linear infinite; }
+.site-logo { filter: drop-shadow(0 0 1px rgb(220 200 255 / .9)) drop-shadow(0 0 14px rgb(157 92 255 / .8)); }
+.site-brand:hover .site-logo { filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 22px rgb(157 92 255 / 1)); }
+.site-title { font-weight: 700; letter-spacing: .12em; text-transform: uppercase; text-shadow: var(--glow); }
+.site-tagline { font-style: italic; letter-spacing: .04em; }
+.site-nav a { font-family: var(--font-heading); font-size: .92rem; letter-spacing: .14em; text-transform: uppercase; }
+.site-nav a[aria-current="page"], .site-nav a:hover { text-shadow: var(--glow); }
+
+@keyframes chaos-spin { to { transform: rotate(360deg); } }
+
+/* Séparateur : étoile entre deux traits */
+.chaos-divider { display: flex; align-items: center; gap: 1rem; max-width: var(--measure); margin: 3.5rem auto; color: var(--color-accent); }
+.chaos-divider::before, .chaos-divider::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--color-border) 30%, var(--color-accent)); }
+.chaos-divider::after { transform: scaleX(-1); }
+.chaos-divider svg { width: 28px; height: 28px; filter: drop-shadow(0 0 6px rgb(157 92 255 / .7)); }
+
+/* Contenu */
+.page-header h1 { margin-bottom: .25rem; }
+.eyebrow { color: var(--color-accent-2); }
+.prose blockquote { background: linear-gradient(90deg, rgb(157 92 255 / .1), transparent); font-style: italic; }
+.prose figure img, .featured-image img { box-shadow: var(--shadow); }
+.prose hr { border: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--color-accent), transparent); margin: 2.5rem 0; }
+.prose ::marker { color: var(--color-accent); }
+
+/* Cartes d'articles */
+.post-card { border: 1px solid var(--color-border); transition: border-color .25s, box-shadow .25s, transform .25s; }
+.post-card:hover { border-color: rgb(157 92 255 / .6); box-shadow: var(--shadow), var(--glow); transform: translateY(-3px); }
+.post-card-image img { filter: saturate(.8) brightness(.85); transition: filter .3s; }
+.post-card:hover .post-card-image img { filter: none; }
+.post-card-title { letter-spacing: .02em; }
+.post-card-title a:hover { color: var(--color-link); }
+.year-group h2, .latest h2 { color: var(--color-accent-2); }
+
+/* Formulaires Tally : panneau clair pour rester lisible quel que soit le thème du formulaire */
+.tally-form { background: #ebe5f2; color: #1b1622; padding: 1.25rem; border-radius: var(--radius); box-shadow: var(--glow); }
+.form-placeholder { border-color: var(--color-accent); }
+
+/* Pied de page */
+.site-footer { position: relative; border-top: 0; background: linear-gradient(transparent, rgb(0 0 0 / .35)); }
+.site-footer::before { content: ""; position: absolute; left: 10%; right: 10%; top: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--color-accent), transparent); opacity: .6; }
+.site-footer h2 { color: var(--color-accent-2); font-size: 1rem; letter-spacing: .14em; text-transform: uppercase; }
+.site-footer a:hover { color: var(--color-heading); }
+.footer-star { display: block; width: 36px; height: 36px; margin: -3.5rem auto 2rem; padding: 4px; color: var(--color-accent); background: var(--color-bg); border-radius: 50%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .chaos-halo { animation: none; }
+  .post-card, .post-card:hover { transition: none; transform: none; }
+}

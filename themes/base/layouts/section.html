@@ -1,0 +1,9 @@
+{{ define "main" }}
+<header class="page-header"><h1>{{ .Title }}</h1></header>
+{{ range .Pages.GroupByDate "2006" }}
+  <section class="year-group" id="annee-{{ .Key }}">
+    <h2>{{ .Key }}</h2>
+    <div class="post-list">{{ range .Pages }}{{ partial "post-card.html" . }}{{ end }}</div>
+  </section>
+{{ end }}
+{{ end }}

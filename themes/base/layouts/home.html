@@ -1,0 +1,13 @@
+{{ define "main" }}
+<article class="page home-intro">
+  <div class="prose">{{ .Content }}</div>
+</article>
+{{ partial "skin/divider.html" . }}
+<section class="latest">
+  <h2>Derniers articles</h2>
+  <div class="post-list">
+    {{ range first 3 (where site.RegularPages "Section" "posts") }}{{ partial "post-card.html" . }}{{ end }}
+  </div>
+  <p class="more"><a href="{{ "/blog/" | relURL }}">Tous les articles</a></p>
+</section>
+{{ end }}

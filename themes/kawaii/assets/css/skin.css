@@ -1,0 +1,97 @@
+/* Skin kawaii — habillage. La structure reste dans base.css. */
+
+/* Polices auto-hébergées (SIL OFL, voir static/fonts/) : aucun appel à un service tiers */
+@font-face { font-family: "Fredoka"; src: url("../fonts/fredoka-latin-wght-normal.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Nunito"; src: url("../fonts/nunito-latin-wght-normal.woff2") format("woff2"); font-weight: 200 1000; font-style: normal; font-display: swap; }
+@font-face { font-family: "Nunito"; src: url("../fonts/nunito-latin-wght-italic.woff2") format("woff2"); font-weight: 200 1000; font-style: italic; font-display: swap; }
+
+/* Fond : pois pastel sur dégradé rose-lavande */
+body {
+  background:
+    radial-gradient(circle at 1px 1px, rgb(255 134 189 / .18) 1.5px, transparent 2px) 0 0 / 26px 26px,
+    linear-gradient(180deg, #fff0f8 0%, var(--color-bg) 30%, #f6f0ff 100%);
+  background-attachment: fixed;
+}
+::selection { background: var(--pastel-lilac); color: var(--color-heading); }
+h1, h2, h3 { font-weight: 600; }
+h4, h5 { font-weight: 600; }
+strong { color: var(--color-heading); }
+a { text-decoration-thickness: 2px; text-decoration-color: var(--pastel-pink); transition: color .2s, background-color .2s; }
+a:hover { color: var(--color-heading); text-decoration-color: var(--color-accent); }
+.prose a:hover { background: rgb(255 179 212 / .35); border-radius: 4px; }
+
+/* En-tête : étoile du chaos arc-en-ciel et étincelles */
+.site-header { position: relative; overflow: hidden; isolation: isolate; border-bottom: 0; padding-bottom: .5rem; }
+.site-header::after { content: ""; display: block; height: 6px; margin: .5rem auto 0; max-width: 40rem; border-radius: 6px; background: var(--rainbow); }
+.kawaii-halo { position: absolute; z-index: -1; top: -18px; left: 50%; width: 230px; height: 230px; margin-left: -115px; opacity: .32; pointer-events: none; animation: kawaii-spin 90s linear infinite; }
+.sparkles { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.sparkle { position: absolute; width: 22px; height: 22px; animation: twinkle 3.2s ease-in-out infinite; }
+.sparkle:nth-child(1) { top: 18%; left: 12%; color: var(--pastel-pink); width: 28px; height: 28px; }
+.sparkle:nth-child(2) { top: 55%; left: 20%; color: var(--pastel-sky); animation-delay: .8s; }
+.sparkle:nth-child(3) { top: 12%; right: 16%; color: var(--pastel-lilac); width: 32px; height: 32px; animation-delay: 1.6s; }
+.sparkle:nth-child(4) { top: 60%; right: 11%; color: var(--pastel-mint); animation-delay: 2.2s; }
+.sparkle:nth-child(5) { top: 35%; left: 4%; color: var(--pastel-lemon); width: 18px; height: 18px; animation-delay: 1.2s; }
+.sparkle:nth-child(6) { top: 32%; right: 4%; color: var(--pastel-peach); width: 18px; height: 18px; animation-delay: .4s; }
+.site-logo { filter: drop-shadow(0 4px 10px rgb(255 134 189 / .45)); transition: transform .3s; }
+.site-brand:hover .site-logo { transform: rotate(-12deg) scale(1.08); }
+.site-title { font-weight: 700; color: var(--color-heading); text-shadow: 3px 3px 0 var(--pastel-pink), 6px 6px 0 rgb(179 225 255 / .7); }
+.site-tagline { color: var(--color-text-muted); }
+.site-nav ul { gap: .5rem .6rem; }
+.site-nav a { font-family: var(--font-heading); font-weight: 500; padding: .3rem .95rem; border: 2px solid transparent; border-radius: 999px; transition: background-color .2s, transform .2s; }
+.site-nav a:hover { background: #fff; border-color: var(--pastel-pink); transform: translateY(-2px); }
+.site-nav a[aria-current="page"] { background: var(--pastel-pink); border-color: var(--pastel-pink); color: var(--color-heading); }
+
+@keyframes kawaii-spin { to { transform: rotate(360deg); } }
+@keyframes twinkle { 0%, 100% { transform: scale(.7) rotate(0); opacity: .5; } 50% { transform: scale(1.1) rotate(20deg); opacity: 1; } }
+@keyframes boing { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-6px) rotate(-1deg); } 70% { transform: translateY(-2px) rotate(.5deg); } }
+
+/* Séparateur : étincelle, cœur, étincelle sur pointillés */
+.kawaii-divider { display: flex; align-items: center; justify-content: center; gap: .6rem; max-width: var(--measure); margin: 3.5rem auto; }
+.kawaii-divider::before, .kawaii-divider::after { content: ""; flex: 1; border-top: 3px dotted var(--pastel-pink); }
+.kawaii-divider svg { width: 18px; height: 18px; }
+.kawaii-divider .heart { width: 30px; height: 30px; color: var(--color-accent); animation: beat 1.8s ease-in-out infinite; }
+.kawaii-divider .sparkle-sky { color: var(--pastel-sky); }
+.kawaii-divider .sparkle-lilac { color: var(--pastel-lilac); }
+@keyframes beat { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.18); } 30% { transform: scale(1); } 45% { transform: scale(1.12); } }
+
+/* Contenu */
+.page-header h1 { color: var(--color-heading); }
+.eyebrow { color: var(--color-link); font-weight: 700; }
+.post-meta a { text-decoration-color: var(--pastel-sky); }
+.prose blockquote { position: relative; border: 2px solid var(--pastel-lilac); border-radius: var(--radius); background: #fff; padding: .75rem 1.25rem; }
+.prose blockquote::after { content: ""; position: absolute; left: 2rem; bottom: -12px; width: 20px; height: 20px; background: #fff; border-right: 2px solid var(--pastel-lilac); border-bottom: 2px solid var(--pastel-lilac); transform: rotate(45deg); }
+.prose img, .featured-image img { border-radius: var(--radius); }
+.prose figure img { box-shadow: var(--shadow); }
+.prose ::marker { color: var(--color-accent); }
+.prose hr { border: 0; height: 4px; border-radius: 4px; background: var(--rainbow); margin: 2.5rem 0; }
+
+/* Cartes d'articles */
+.post-card { border: 2px solid var(--color-border); }
+.post-card:hover { border-color: var(--color-accent); animation: boing .6s ease-out; }
+.post-list > .post-card:nth-child(6n+1) { border-top: 6px solid var(--pastel-pink); }
+.post-list > .post-card:nth-child(6n+2) { border-top: 6px solid var(--pastel-sky); }
+.post-list > .post-card:nth-child(6n+3) { border-top: 6px solid var(--pastel-mint); }
+.post-list > .post-card:nth-child(6n+4) { border-top: 6px solid var(--pastel-lemon); }
+.post-list > .post-card:nth-child(6n+5) { border-top: 6px solid var(--pastel-lilac); }
+.post-list > .post-card:nth-child(6n+6) { border-top: 6px solid var(--pastel-peach); }
+.post-card-title a:hover { color: var(--color-link); }
+.latest h2, .year-group h2 { display: inline-block; padding: .1rem 1rem; border-radius: 999px; background: var(--pastel-lemon); }
+.more a { font-family: var(--font-heading); font-weight: 600; text-decoration: none; padding: .4rem 1.1rem; border-radius: 999px; background: var(--color-accent); color: #fff; box-shadow: var(--shadow); }
+.more a:hover { background: var(--color-heading); color: #fff; }
+
+/* Formulaires */
+.tally-form { background: #fff; padding: 1rem 1.25rem; border: 2px solid var(--pastel-pink); border-radius: var(--radius); box-shadow: var(--shadow); }
+.form-placeholder { background: #fff; border: 2px dashed var(--color-accent); }
+
+/* Pied de page : bord festonné, fond lavande */
+.site-footer { position: relative; margin-top: 3rem; border-top: 0; background: #f1e6ff; color: var(--color-text-muted); }
+.site-footer::before { content: ""; position: absolute; left: 0; right: 0; top: -15px; height: 16px; background: radial-gradient(circle at 15px 16px, #f1e6ff 15px, transparent 15.5px) 0 0 / 30px 16px repeat-x; }
+.site-footer h2 { color: var(--color-heading); }
+.site-footer a:hover { color: var(--color-link); }
+.footer-star { display: block; width: 64px; height: 64px; margin: -4.75rem auto 1.5rem; filter: drop-shadow(0 3px 6px rgb(106 58 136 / .2)); }
+.footer-star:hover { animation: kawaii-spin 1.2s ease-in-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .kawaii-halo, .sparkle, .kawaii-divider .heart, .post-card:hover, .footer-star:hover { animation: none; }
+  .site-brand:hover .site-logo, .site-nav a:hover { transform: none; }
+}

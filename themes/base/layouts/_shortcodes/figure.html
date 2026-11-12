@@ -1,0 +1,18 @@
+{{/* Usage : {{< figure src="image.jpg" alt="…" caption="…" width="170" class="aligncenter" >}}
+     src = ressource du page bundle ; image redimensionnée en WebP, alt toujours présent. */}}
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $w := .Get "width" -}}
+{{- $class := .Get "class" -}}
+{{- $cap := .Get "caption" -}}
+{{- with .Page.Resources.Get $src -}}
+  {{- $max := cond (ne $w "") (mul (int $w) 2) 1600 -}}
+  {{- $max = cond (gt $max .Width) .Width $max -}}
+  {{- $img := .Resize (printf "%dx webp" $max) -}}
+  <figure{{ with $class }} class="{{ . }}"{{ end }}>
+    <img src="{{ $img.RelPermalink }}" alt="{{ $alt }}" width="{{ with $w }}{{ . }}{{ else }}{{ $img.Width }}{{ end }}" height="{{ with $w }}{{ div (mul (int .) $img.Height) $img.Width }}{{ else }}{{ $img.Height }}{{ end }}" loading="lazy" decoding="async">
+    {{- with $cap }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+{{- else -}}
+  {{- errorf "figure : ressource %q introuvable dans %s" $src $.Page.File.Path -}}
+{{- end -}}

@@ -1,0 +1,6 @@
+{{ with .Params.image }}{{ with $.Resources.Get . }}
+  {{ $big := .Resize "1200x webp" }}{{ $mid := .Resize "800x webp" }}
+  <figure class="featured-image">
+    <img src="{{ $big.RelPermalink }}" srcset="{{ $mid.RelPermalink }} 800w, {{ $big.RelPermalink }} 1200w" sizes="(max-width: 800px) 100vw, 800px" width="{{ $big.Width }}" height="{{ $big.Height }}" alt="">
+  </figure>
+{{ end }}{{ end }}

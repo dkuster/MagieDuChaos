@@ -1,0 +1,5 @@
+{{/* Usage : {{< youtube ID >}} — lecteur youtube-nocookie, sans cookies avant lecture */}}
+{{- $id := .Get 0 | default (.Get "id") -}}
+<div class="video-embed">
+  <iframe src="https://www.youtube-nocookie.com/embed/{{ $id }}" title="Vidéo YouTube" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</div>

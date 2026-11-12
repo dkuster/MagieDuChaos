@@ -1,0 +1,17 @@
+{{/* Usage : {{< tally "renseignements" >}} — l'ID Tally est dans hugo.toml, [params.tally] */}}
+{{- $key := .Get 0 -}}
+{{- $id := index site.Params.tally $key -}}
+{{- /* Accepte l'ID seul (PR1YoP) ou l'URL complète (https://tally.so/r/PR1YoP) */ -}}
+{{- with $id }}{{ $id = path.Base (strings.TrimSuffix "/" (index (split . "?") 0)) }}{{ end -}}
+{{- if $id -}}
+<div class="tally-form">
+  <iframe data-tally-src="https://tally.so/embed/{{ $id }}?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1" loading="lazy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0" title="Formulaire {{ $key }}"></iframe>
+  <noscript><p><a href="https://tally.so/r/{{ $id }}">Ouvrir le formulaire</a></p></noscript>
+</div>
+{{- if not (.Page.Store.Get "tallyScript") -}}{{- .Page.Store.Set "tallyScript" true -}}
+<script async src="https://tally.so/widgets/embed.js" onload="Tally.loadEmbeds()"></script>
+{{- end -}}
+{{- else -}}
+{{- warnf "Formulaire Tally « %s » : identifiant manquant dans hugo.toml (%s)" $key .Page.File.Path -}}
+<p class="form-placeholder">Le formulaire « {{ $key }} » sera bientôt disponible. En attendant : <a href="mailto:burgundi@thanateros.live">burgundi@thanateros.live</a></p>
+{{- end -}}

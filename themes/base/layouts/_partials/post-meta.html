@@ -1,0 +1,6 @@
+<p class="post-meta">
+  <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_long" }}</time>
+  {{ with .Params.author }} · {{ . }}{{ end }}
+  {{ with .GetTerms "types" }} · {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ $t.RelPermalink }}">{{ $t.LinkTitle }}</a>{{ end }}{{ end }}
+  {{ with .GetTerms "sources" }} · {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ $t.RelPermalink }}">{{ $t.LinkTitle }}</a>{{ end }}{{ end }}
+</p>

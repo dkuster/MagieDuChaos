@@ -1,0 +1,13 @@
+{{- /* Étoile du chaos en SVG, couleur = currentColor. Paramètre : classe CSS (chaîne). */ -}}
+<svg class="{{ . }}" viewBox="-50 -50 100 100" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="chaos-arrow-{{ . | anchorize }}">
+      <line x1="0" y1="-10" x2="0" y2="-36" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+      <path d="M0 -48 L-7 -33 L7 -33 Z" fill="currentColor"/>
+    </g>
+  </defs>
+  {{- range seq 0 7 }}
+  <use href="#chaos-arrow-{{ $ | anchorize }}" transform="rotate({{ mul . 45 }})"/>
+  {{- end }}
+  <circle r="10" fill="none" stroke="currentColor" stroke-width="3.2"/>
+</svg>

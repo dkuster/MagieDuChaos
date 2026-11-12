@@ -1,0 +1,20 @@
+/* Valeurs par défaut du contrat de variables.
+   Chaque skin fournit son propre css/tokens.css qui remplace ce fichier. */
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f4f4f6;
+  --color-text: #222228;
+  --color-text-muted: #5c5c66;
+  --color-heading: #111116;
+  --color-accent: #6b2fb3;
+  --color-accent-2: #2f7bb3;
+  --color-link: #4b2390;
+  --color-border: #d9d9e0;
+  --font-display: Georgia, serif;
+  --font-heading: Georgia, serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 6px;
+  --shadow: 0 1px 3px rgb(0 0 0 / .12);
+  --measure: 42rem;
+  --wide: 68rem;
+}

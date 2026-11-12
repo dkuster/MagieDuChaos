@@ -1,0 +1,28 @@
+/* Skin kawaii — valeurs du contrat de variables (remplace themes/base/assets/css/tokens.css) */
+:root {
+  color-scheme: light;
+  --color-bg: #fff6fb;          /* rose barbe à papa très clair */
+  --color-surface: #ffffff;
+  --color-text: #4a3b57;        /* prune douce */
+  --color-text-muted: #7c6a8a;
+  --color-heading: #6a3a88;     /* lavande profonde */
+  --color-accent: #ff86bd;      /* rose bonbon */
+  --color-accent-2: #6cc4ff;    /* bleu ciel : focus */
+  --color-link: #c22f78;
+  --color-border: #f5d3e6;
+  --font-display: "Fredoka", "Nunito", "Comic Sans MS", system-ui, sans-serif;
+  --font-heading: "Fredoka", "Nunito", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 22px;
+  --shadow: 0 6px 18px rgb(255 134 189 / .2), 0 1px 3px rgb(106 58 136 / .08);
+  --measure: 42rem;
+  --wide: 68rem;
+  /* Variables propres au skin : palette arc-en-ciel pastel */
+  --pastel-pink: #ffb3d4;
+  --pastel-peach: #ffd1a9;
+  --pastel-lemon: #fff1a1;
+  --pastel-mint: #b5f0d3;
+  --pastel-sky: #b3e1ff;
+  --pastel-lilac: #d9c2ff;
+  --rainbow: linear-gradient(90deg, var(--pastel-pink), var(--pastel-peach), var(--pastel-lemon), var(--pastel-mint), var(--pastel-sky), var(--pastel-lilac));
+}

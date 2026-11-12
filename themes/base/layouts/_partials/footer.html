@@ -1,0 +1,25 @@
+<footer class="site-footer">
+  {{ partial "skin/footer-decor.html" . }}
+  <div class="footer-grid">
+    <section>
+      <h2>Archives</h2>
+      <ul class="archives">
+        {{ range (where site.RegularPages "Section" "posts").GroupByDate "2006" }}
+          <li><a href="{{ "/blog/" | relURL }}#annee-{{ .Key }}">{{ .Key }}</a> <span class="count">({{ len .Pages }})</span></li>
+        {{ end }}
+      </ul>
+    </section>
+    <section>
+      <h2>Catégories</h2>
+      <ul class="terms">
+        {{ range site.Taxonomies.types.ByCount }}<li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a> <span class="count">({{ .Count }})</span></li>{{ end }}
+        {{ range site.Taxonomies.sources.ByCount }}<li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a> <span class="count">({{ .Count }})</span></li>{{ end }}
+      </ul>
+    </section>
+    <section>
+      <h2>Contact</h2>
+      <p><a href="{{ "/carte-de-visite/" | relURL }}">Nous écrire</a> · <a href="{{ "/politique-de-confidentialite/" | relURL }}">Confidentialité</a> · <a href="{{ with site.GetPage "/posts" }}{{ with .OutputFormats.Get "rss" }}{{ .RelPermalink }}{{ end }}{{ end }}">RSS</a></p>
+    </section>
+  </div>
+  <p class="colophon">© {{ now.Year }} {{ site.Title }}</p>
+</footer>

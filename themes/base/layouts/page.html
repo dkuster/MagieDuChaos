@@ -1,0 +1,18 @@
+{{ define "main" }}
+<article class="page{{ if eq .Section "posts" }} post{{ end }}">
+  <header class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{ if eq .Section "posts" }}{{ partial "post-meta.html" . }}{{ end }}
+  </header>
+  {{ if eq .Section "posts" }}{{ partial "featured-image.html" . }}{{ end }}
+  <div class="prose">{{ .Content }}</div>
+  {{ if eq .Section "posts" }}
+    {{ partial "skin/divider.html" . }}
+    {{ $posts := where site.RegularPages "Section" "posts" }}
+    <nav class="post-nav" aria-label="Articles voisins">
+      {{ with first 1 (where $posts "Date" "lt" .Date).ByDate.Reverse }}{{ range . }}<a class="older" href="{{ .RelPermalink }}">← {{ .Title }}</a>{{ end }}{{ end }}
+      {{ with first 1 (where $posts "Date" "gt" .Date).ByDate }}{{ range . }}<a class="newer" href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}{{ end }}
+    </nav>
+  {{ end }}
+</article>
+{{ end }}

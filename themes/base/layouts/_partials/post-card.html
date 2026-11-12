@@ -1,0 +1,9 @@
+<article class="post-card">
+  {{ with .Params.image }}{{ with $.Resources.Get . }}
+    {{ $t := .Fill "640x360 Center" }}
+    <a class="post-card-image" href="{{ $.RelPermalink }}" tabindex="-1"><img src="{{ $t.RelPermalink }}" width="{{ $t.Width }}" height="{{ $t.Height }}" alt="" loading="lazy"></a>
+  {{ end }}{{ end }}
+  <h3 class="post-card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  {{ partial "post-meta.html" . }}
+  {{ with .Summary }}<div class="post-card-summary">{{ . | plainify | truncate 220 }}</div>{{ end }}
+</article>

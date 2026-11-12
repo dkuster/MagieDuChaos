@@ -1,0 +1,7 @@
+/public/
+/resources/_gen/
+.hugo_build.lock
+# Le dump et la copie de l'ancien site ne doivent jamais entrer dans le dépôt
+*.sql
+*.sql.gz
+__pycache__/

@@ -1,0 +1,78 @@
+# Magie du Chaos — configuration Hugo
+baseURL = "https://magieduchaos.org/"
+locale = "fr-FR"
+defaultContentLanguage = "fr"
+title = "Magie du Chaos"
+timeZone = "Europe/Zurich"
+enableRobotsTXT = true
+summaryLength = 45
+
+# Thème : le skin actif. Chaque skin charge lui-même le socle commun "base"
+# (voir themes/<skin>/hugo.toml). Se choisit ici, ou au build sans toucher ce fichier :
+#   hugo --theme kawaii
+#   hugo --theme chaos-dark
+#   hugo --theme base                (socle seul, sans habillage)
+theme = "chaos-dark"
+
+[params]
+  description = "Site officiel francophone des Illuminates of Thanateros"
+  # Formulaires Tally : ID seul (PR1YoP) ou URL complète (https://tally.so/r/PR1YoP)
+  [params.tally]
+    renseignements = "PR1YoP"
+    adhesion = "PR1YoP"
+
+[pagination]
+  pagerSize = 10
+
+# URL identiques à l'ancien WordPress
+[permalinks]
+  [permalinks.page]
+    posts = "/:year/:month/:day/:slug/"
+  [permalinks.section]
+    posts = "/blog/"
+
+# Les deux axes de catégories de l'ancien site
+[taxonomies]
+  type_ecrit = "types"
+  source = "sources"
+
+[menus]
+  [[menus.main]]
+    name = "Accueil"
+    pageRef = "/"
+    weight = 10
+  [[menus.main]]
+    name = "Temple"
+    pageRef = "/temple"
+    weight = 20
+  [[menus.main]]
+    name = "Adhésion"
+    pageRef = "/adhesion"
+    weight = 30
+  [[menus.main]]
+    name = "Blog"
+    pageRef = "/posts"
+    weight = 40
+  [[menus.main]]
+    name = "Liens"
+    pageRef = "/liens"
+    weight = 50
+  [[menus.main]]
+    name = "Livres"
+    pageRef = "/livres"
+    weight = 60
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true          # contenu maîtrisé : <u>, <sub> issus de WordPress
+  [markup.goldmark.extensions.typographer]
+    disable = true         # garder la ponctuation telle qu'écrite
+
+[services.rss]
+  limit = 20
+
+[outputs]
+  home = ["html", "rss"]
+  section = ["html", "rss"]
+  taxonomy = ["html"]
+  term = ["html", "rss"]

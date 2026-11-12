@@ -1,0 +1,18 @@
+{{- /* Étoile du chaos kawaii. Paramètres : dict "class" (chaîne) "face" (bool : petit visage au centre) */ -}}
+{{- $colors := slice "#ff8fc0" "#ffb17a" "#ffd84d" "#7fdcae" "#6cc4ff" "#a98bff" "#ff8fc0" "#ffb17a" -}}
+<svg class="{{ .class }}" viewBox="-50 -50 100 100" aria-hidden="true" focusable="false">
+  {{- range $i, $c := $colors }}
+  <g transform="rotate({{ mul $i 45 }})">
+    <line x1="0" y1="-14" x2="0" y2="-34" stroke="{{ $c }}" stroke-width="5" stroke-linecap="round"/>
+    <path d="M0 -48 Q-2 -40 -9 -33 Q0 -36 9 -33 Q2 -40 0 -48 Z" fill="{{ $c }}" stroke="{{ $c }}" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+  {{- end }}
+  {{- if .face }}
+  <circle r="15" fill="#ffd3e6" stroke="#ff8fc0" stroke-width="2.5"/>
+  <circle cx="-5.5" cy="-2" r="2" fill="#4a3b57"/><circle cx="5.5" cy="-2" r="2" fill="#4a3b57"/>
+  <path d="M-3 3 Q0 6 3 3" fill="none" stroke="#4a3b57" stroke-width="1.6" stroke-linecap="round"/>
+  <ellipse cx="-9" cy="3.5" rx="3" ry="1.8" fill="#ff8fc0" opacity=".6"/><ellipse cx="9" cy="3.5" rx="3" ry="1.8" fill="#ff8fc0" opacity=".6"/>
+  {{- else }}
+  <circle r="12" fill="none" stroke="#ff8fc0" stroke-width="4"/>
+  {{- end }}
+</svg>

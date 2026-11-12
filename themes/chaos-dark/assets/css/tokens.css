@@ -1,0 +1,23 @@
+/* Skin chaos-dark — valeurs du contrat de variables (remplace themes/base/assets/css/tokens.css) */
+:root {
+  color-scheme: dark;
+  --color-bg: #0b0910;          /* noir violacé */
+  --color-surface: #16121f;
+  --color-text: #d9d3e3;
+  --color-text-muted: #9d93ae;
+  --color-heading: #f3eefa;
+  --color-accent: #9d5cff;      /* violet chaos */
+  --color-accent-2: #e0a84f;    /* or braise : focus, détails */
+  --color-link: #c7a4ff;
+  --color-border: #2c2438;
+  --font-display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --font-heading: "Cinzel", Georgia, serif;
+  --font-body: "EB Garamond", Garamond, Georgia, serif;
+  --radius: 4px;
+  --shadow: 0 2px 12px rgb(0 0 0 / .55);
+  --measure: 42rem;
+  --wide: 68rem;
+  /* Variables propres au skin */
+  --glow: 0 0 18px rgb(157 92 255 / .45);
+  --glow-strong: 0 0 28px rgb(157 92 255 / .7);
+}

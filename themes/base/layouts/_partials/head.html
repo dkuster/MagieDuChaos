@@ -1,0 +1,17 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ site.Title }} — {{ site.Params.description }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary | plainify | truncate 160 }}{{ else }}{{ site.Params.description }}{{ end }}{{ end }}">
+<link rel="canonical" href="{{ .Permalink }}">
+{{ with .OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ .Permalink }}">{{ end }}
+{{ with resources.Get "images/logo.png" }}
+  {{ $ico := .Resize "32x32" }}{{ $apple := .Resize "180x180" }}
+  <link rel="icon" type="image/png" href="{{ $ico.RelPermalink }}">
+  <link rel="apple-touch-icon" href="{{ $apple.RelPermalink }}">
+{{ end }}
+{{/* Les variables (tokens) viennent du skin ; base.css ne contient que la structure */}}
+{{ $css := slice (resources.Get "css/tokens.css") (resources.Get "css/base.css") }}
+{{ with resources.Get "css/skin.css" }}{{ $css = $css | append . }}{{ end }}
+{{ $css = $css | resources.Concat "css/site.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{ partial "skin/head.html" . }}
