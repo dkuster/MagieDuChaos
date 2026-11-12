@@ -27,7 +27,7 @@ theme = ["cthulhu", "chaos-dark", "kawaii" ]
   randomSkin = "default"
   # Formulaires Tally : ID seul (PR1YoP) ou URL complète (https://tally.so/r/PR1YoP)
   [params.tally]
-    renseignements = "PR1YoP"
+    renseignements = "QoevLk"
     adhesion = "PR1YoP"
 
 [pagination]
