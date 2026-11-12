@@ -36,4 +36,3 @@ Le webzine KAosphOruS (<https://www.kaosphorus.net/>) est la source la plus rich
   - SKaRaB, SNaKe, Sister Apple, Brother Moebius B., 2009 (1986), APIKORSUS, Un Essai sur les diverses pratiques de la Chaos Magic, par The Lincoln Order of Necromancers (L.O.O.N.) ([voir ici](https://www.kaosphorus.net/wp-content/uploads/2014/04/Apikorsus_trad.pdf))
   - Venger Satanis, 2010 (2007), Le Culte de Cthulhu ([voir ici](https://www.kaosphorus.net/wp-content/uploads/2010/08/Le-Culte-de-Cthulhu.pdf))
 
-Image par [Thorsten Frenzel](https://pixabay.com/fr/users/ThorstenF-7677369/)
