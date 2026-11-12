@@ -76,7 +76,7 @@ a:hover { color: var(--color-heading); text-decoration-color: var(--color-accent
 .post-list > .post-card:nth-child(6n+6) { border-top: 6px solid var(--pastel-peach); }
 .post-card-title a:hover { color: var(--color-link); }
 .latest h2, .year-group h2 { display: inline-block; padding: .1rem 1rem; border-radius: 999px; background: var(--pastel-lemon); }
-.more a { font-family: var(--font-heading); font-weight: 600; text-decoration: none; padding: .4rem 1.1rem; border-radius: 999px; background: var(--color-accent); color: #fff; box-shadow: var(--shadow); }
+.more a { font-family: var(--font-heading); font-weight: 600; text-decoration: none; padding: .4rem 1.1rem; border-radius: 999px; background: var(--color-accent); color: var(--color-text); box-shadow: var(--shadow); }
 .more a:hover { background: var(--color-heading); color: #fff; }
 
 /* Formulaires */

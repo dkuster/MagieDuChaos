@@ -4,11 +4,11 @@
   --color-bg: #fff6fb;          /* rose barbe à papa très clair */
   --color-surface: #ffffff;
   --color-text: #4a3b57;        /* prune douce */
-  --color-text-muted: #7c6a8a;
+  --color-text-muted: #71607f;  /* prune grisée, lisible aussi sur le pied de page lavande */
   --color-heading: #6a3a88;     /* lavande profonde */
-  --color-accent: #ff86bd;      /* rose bonbon */
-  --color-accent-2: #6cc4ff;    /* bleu ciel : focus */
-  --color-link: #c22f78;
+  --color-accent: #ff86bd;      /* rose bonbon : décoratif uniquement (puces, cœur, bordures), jamais seul porteur d'information */
+  --color-accent-2: #1f7fc4;    /* bleu ciel soutenu : contour de focus clavier, visible sur tous les fonds */
+  --color-link: #b82a72;        /* framboise */
   --color-border: #f5d3e6;
   --font-display: "Fredoka", "Nunito", "Comic Sans MS", system-ui, sans-serif;
   --font-heading: "Fredoka", "Nunito", system-ui, sans-serif;
