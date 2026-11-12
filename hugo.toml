@@ -1,5 +1,5 @@
 # Magie du Chaos — configuration Hugo
-baseURL = "https://dkuster.github.io/MagieDuChaos/"
+baseURL = "https://magieduchaos.org/"
 locale = "fr-FR"
 defaultContentLanguage = "fr"
 title = "Magie du Chaos"
@@ -13,7 +13,7 @@ summaryLength = 45
 # Build avec un seul skin, sans sélecteur :
 #   hugo --theme kawaii
 #   hugo --theme base                (socle seul, sans habillage)
-theme = ["chaos-dark", "kawaii", "cthulhu"]
+theme = ["cthulhu", "chaos-dark", "kawaii" ]
 
 [params]
   description = "Site officiel francophone des Illuminates of Thanateros"
