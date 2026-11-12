@@ -1,0 +1,3 @@
+filigrane.svg — tête de bouc en traits fins, dessin original réalisé pour Magie du Chaos (2026),
+d'après l'idée générale du Baphomet d'Éliphas Lévi (Dogme et Rituel de la Haute Magie, 1856, domaine public),
+sans en reprendre le dessin. Généré par tools/skins/baphomet/goat.py. Même licence que le site.

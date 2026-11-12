@@ -1,0 +1,149 @@
+/* Skin baphomet — habillage. La structure reste dans base.css.
+   Le Baphomet d'Éliphas Lévi (1856) : union des contraires, Solve et Coagula, lune blanche en haut et lune noire en bas. */
+
+/* Polices auto-hébergées (SIL OFL, voir static/fonts/) : aucun appel à un service tiers */
+@font-face { font-family: "UnifrakturMaguntia"; src: url("../fonts/unifrakturmaguntia-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Cormorant SC"; src: url("../fonts/cormorant-sc-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Cormorant SC"; src: url("../fonts/cormorant-sc-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Spectral"; src: url("../fonts/spectral-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Spectral"; src: url("../fonts/spectral-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Spectral"; src: url("../fonts/spectral-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+
+/* Fond : parchemin vergé, rousseurs aux coins, et le bouc en filigrane au centre de la page */
+body {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  background-color: var(--color-bg);
+  background-image:
+    url("../images/skins/baphomet/filigrane.svg"),
+    repeating-linear-gradient(0deg, rgb(120 90 40 / .035) 0 1px, transparent 1px 7px),
+    radial-gradient(ellipse 45% 35% at 8% 6%, rgb(160 110 40 / .13), transparent 70%),
+    radial-gradient(ellipse 40% 35% at 94% 92%, rgb(140 90 30 / .14), transparent 70%),
+    radial-gradient(ellipse 120% 95% at 50% 50%, transparent 62%, rgb(110 78 32 / .2));
+  background-repeat: no-repeat, repeat, no-repeat, no-repeat, no-repeat;
+  background-position: center 55%, 0 0, 0 0, 0 0, 0 0;
+  background-size: min(86vmin, 720px) auto, auto, 100% 100%, 100% 100%, 100% 100%;
+  background-attachment: fixed;
+}
+@media (max-width: 48rem) {
+  /* fixed est mal géré sur mobile : le filigrane défile sous l'en-tête */
+  body { background-attachment: scroll; background-position: center 24rem, 0 0, 0 0, 0 0, 0 0; }
+}
+::selection { background: rgb(158 42 28 / .22); color: var(--color-heading); }
+html { scrollbar-color: #b5a07a var(--color-bg); }
+
+/* Typographie : petites capitales gravées, lettrine rubriquée */
+h1, h2, h3 { font-weight: 600; letter-spacing: .03em; }
+h4, h5 { font-family: var(--font-body); font-weight: 600; }
+strong { color: var(--color-heading); font-weight: 600; }
+a { text-decoration-color: rgb(143 36 24 / .35); text-decoration-thickness: 1px; transition: color .2s, text-decoration-color .2s; }
+a:hover { color: var(--color-accent); text-decoration-color: currentColor; }
+.prose > p:first-of-type::first-letter { float: left; font-family: var(--font-display); font-size: 3.7em; line-height: .82; color: var(--color-accent); padding: .06em .12em 0 0; }
+
+/* En-tête : le flambeau au-dessus du logo, Solve et Coagula de part et d'autre du titre, double filet */
+.site-header { position: relative; padding-top: 1.25rem; border-bottom: 0; }
+.site-header::after { content: ""; position: absolute; left: 6%; right: 6%; bottom: 0; height: 4px; border-top: 1px solid var(--color-heading); border-bottom: 1px solid var(--color-heading); opacity: .5; }
+.baphomet-torch { display: block; width: 56px; height: auto; margin: 0 auto .25rem; overflow: visible; }
+.baphomet-torch .halo-in { stop-color: var(--flame); stop-opacity: .5; }
+.baphomet-torch .halo-out { stop-color: var(--flame); stop-opacity: 0; }
+.baphomet-torch .flame-outer { fill: var(--color-accent); }
+.baphomet-torch .flame-mid { fill: var(--flame); }
+.baphomet-torch .flame-core { fill: var(--flame-core); }
+.baphomet-torch .torch-shaft { fill: var(--ink); }
+.baphomet-torch .torch-bands { fill: none; stroke: var(--color-accent-2); stroke-width: 1.6; }
+.baphomet-torch .torch-flame, .baphomet-torch .flame-mid, .baphomet-torch .flame-core { transform-box: fill-box; transform-origin: 50% 100%; }
+.baphomet-torch .torch-flame { animation: baphomet-flicker 3.4s ease-in-out infinite; }
+.baphomet-torch .flame-mid { animation: baphomet-flicker-in 2.3s ease-in-out infinite; }
+.baphomet-torch .flame-core { animation: baphomet-flicker-in 1.7s ease-in-out infinite reverse; }
+.baphomet-torch .torch-halo { transform-box: fill-box; transform-origin: center; animation: baphomet-glow 2.9s ease-in-out infinite; }
+/* Vacillement irrégulier : étapes non régulières pour éviter un balancier mécanique */
+@keyframes baphomet-flicker {
+  0%, 100% { transform: scale(1, 1) skewX(0); }
+  13% { transform: scale(.97, 1.04) skewX(-2deg); }
+  27% { transform: scale(1.02, .96) skewX(1.5deg); }
+  41% { transform: scale(.98, 1.06) skewX(-1deg); }
+  58% { transform: scale(1.03, .97) skewX(2.5deg); }
+  74% { transform: scale(.99, 1.03) skewX(-1.5deg); }
+  88% { transform: scale(1.01, .98) skewX(.8deg); }
+}
+@keyframes baphomet-flicker-in { 0%, 100% { transform: scale(1, 1); } 35% { transform: scale(.94, 1.08); } 70% { transform: scale(1.04, .93); } }
+@keyframes baphomet-glow { 0%, 100% { opacity: .85; transform: scale(1); } 40% { opacity: 1; transform: scale(1.06); } 70% { opacity: .75; transform: scale(.97); } }
+
+.site-logo { filter: sepia(.3) drop-shadow(0 2px 3px rgb(60 40 15 / .25)); }
+.site-title { display: flex; align-items: center; justify-content: center; gap: .4em; font-size: clamp(2.3rem, 7vw, 3.8rem); font-weight: 400; color: var(--color-heading); }
+.site-title::before, .site-title::after { font-family: var(--font-heading); font-weight: 600; font-size: .28em; letter-spacing: .22em; color: var(--color-accent); }
+.site-title::before { content: "Solve" / ""; align-self: flex-start; margin-top: .2em; }
+.site-title::after { content: "Coagula" / ""; align-self: flex-end; margin-bottom: .1em; }
+.site-brand:hover .site-title { color: var(--ink); }
+.site-tagline { font-style: italic; letter-spacing: .02em; }
+.site-nav a { font-family: var(--font-heading); font-weight: 600; font-size: 1.12rem; letter-spacing: .08em; }
+.site-nav a[aria-current="page"], .site-nav a:hover { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+@media (max-width: 36rem) {
+  /* Mots écrits à la verticale : Solve monte, Coagula descend */
+  .site-title { gap: .3em; }
+  .site-title::before, .site-title::after { writing-mode: vertical-rl; align-self: center; margin: 0; font-size: .3em; letter-spacing: .12em; }
+  .site-title::before { transform: rotate(180deg); }
+}
+
+/* Séparateur : lune blanche, pentagramme, lune noire */
+.baphomet-divider { max-width: var(--measure); margin: 3rem auto; }
+.baphomet-divider svg { display: block; width: 100%; max-width: 30rem; height: auto; margin: 0 auto; overflow: visible; }
+.baphomet-divider .rule { fill: none; stroke: var(--color-accent-2); stroke-width: .8; opacity: .6; }
+.baphomet-divider .dot { fill: var(--color-accent); }
+.baphomet-divider .moon-white { fill: var(--vellum-light); stroke: var(--ink); stroke-width: 1; }
+.baphomet-divider .moon-black { fill: var(--ink); }
+.baphomet-divider .pentacle-ring { fill: none; stroke: var(--color-accent); stroke-width: 1; }
+.baphomet-divider .pentacle { fill: none; stroke: var(--color-accent); stroke-width: 1.2; stroke-linejoin: round; }
+
+/* Contenu */
+.eyebrow { font-family: var(--font-heading); font-weight: 600; color: var(--color-accent); letter-spacing: .16em; }
+.prose h2 { border-bottom: 1px solid var(--color-border); padding-bottom: .2rem; }
+.prose blockquote { position: relative; border-left: 2px solid var(--color-accent); border-radius: 0; background: rgb(248 242 228 / .6); font-style: italic; padding: .75rem 1.25rem .75rem 2.75rem; }
+.prose blockquote::before { content: "\201C"; position: absolute; left: .55rem; top: -.1rem; font-family: var(--font-heading); font-size: 3.4rem; line-height: 1; color: var(--color-accent); opacity: .7; }
+.prose hr { border: 0; height: 1.5rem; margin: 2.5rem 0; overflow: visible; text-align: center; background: linear-gradient(90deg, transparent, var(--color-border) 25%, var(--color-border) 75%, transparent) center / 100% 1px no-repeat; }
+.prose hr::after { content: "\2042"; display: inline-block; padding: 0 .6rem; background: var(--color-bg); color: var(--color-accent); font-size: 1.2rem; line-height: 1.5rem; }
+.prose ::marker { color: var(--color-accent); }
+.prose figure img, .featured-image img { border: 1px solid var(--color-border); padding: 4px; background: var(--vellum-light); box-shadow: var(--shadow); }
+.prose figcaption { font-style: italic; }
+
+/* Cartes d'articles : planches encadrées d'un filet, gravures sépia qui reprennent leurs couleurs au survol */
+.post-card { position: relative; border: 1px solid var(--color-border); transition: border-color .3s, transform .3s, box-shadow .3s; }
+.post-card::after { content: ""; position: absolute; inset: 5px; border: 1px solid rgb(29 23 18 / .12); pointer-events: none; }
+.post-card:hover { border-color: var(--color-accent); transform: translateY(-2px); box-shadow: 0 1px 0 rgb(29 23 18 / .08), 0 10px 24px rgb(90 62 22 / .2); }
+.post-card-image img { filter: sepia(.45) saturate(.8) contrast(1.03); transition: filter .4s; }
+.post-card:hover .post-card-image img { filter: none; }
+.post-card-title a:hover { color: var(--color-accent); }
+.year-group h2, .latest h2 { color: var(--color-accent); letter-spacing: .06em; }
+.more a { font-family: var(--font-heading); font-weight: 600; text-decoration: none; padding: .3rem 1rem; border: 1px solid var(--color-accent); color: var(--color-accent); letter-spacing: .08em; transition: background-color .2s, color .2s; }
+.more a:hover { background: var(--color-accent); color: var(--vellum-light); }
+
+/* Formulaires Tally : feuillet clair */
+.tally-form { background: var(--vellum-light); border: 1px solid var(--color-border); padding: 1.25rem; box-shadow: var(--shadow); }
+.form-placeholder { border-color: var(--color-accent); }
+
+/* Pied de page : la lune noire. Fond d'encre, les variables y sont inversées ; le caducée y est planté */
+.site-footer {
+  --color-text: #e5d9bf;
+  --color-text-muted: #b8a98a;
+  --color-heading: #f3ead6;
+  --color-link: #ec8a72;
+  --color-border: #3d3127;
+  --color-surface: #2a211a;
+  --color-accent-2: var(--flame);
+  position: relative; margin-top: 8rem; border-top: 4px double rgb(217 164 65 / .55); background: var(--ink);
+}
+.baphomet-caduceus { position: absolute; left: 50%; bottom: calc(100% - 24px); width: 92px; height: auto; transform: translateX(-50%); pointer-events: none; overflow: visible; }
+.baphomet-caduceus .staff { fill: var(--ink); }
+.baphomet-caduceus .wings { fill: var(--gold); }
+.baphomet-caduceus .snake { fill: none; stroke: var(--gold); stroke-width: 2.6; stroke-linecap: round; }
+.baphomet-caduceus .snake-head { fill: var(--gold); }
+.baphomet-caduceus .orb { fill: var(--color-accent); }
+.site-footer h2 { font-family: var(--font-heading); color: var(--flame); font-size: 1.15rem; letter-spacing: .1em; }
+.site-footer a { text-decoration-color: rgb(236 138 114 / .4); }
+.site-footer a:hover { color: var(--color-heading); text-decoration-color: currentColor; }
+
+@media (prefers-reduced-motion: reduce) {
+  .baphomet-torch .torch-flame, .baphomet-torch .flame-mid, .baphomet-torch .flame-core, .baphomet-torch .torch-halo { animation: none; }
+  a, .post-card, .post-card-image img, .more a { transition: none; }
+  .post-card:hover { transform: none; }
+}

@@ -20,8 +20,9 @@ hugo --gc --minify               # build de production dans public/
 | `content/types/`, `content/sources/` | les deux axes de catégories (type d'écrit, source) |
 | `static/files/` | PDF téléchargeables |
 | `themes/base/` | socle : gabarits HTML et CSS de structure, qui n'utilise que des variables |
-| `themes/<skin>/` | habillages interchangeables : `chaos-dark` (par défaut), `kawaii`, `cthulhu` |
+| `themes/<skin>/` | habillages interchangeables : `chaos-dark` (par défaut), `kawaii`, `cthulhu`, `baphomet` |
 | `tools/wp2hugo/` | conversion ponctuelle depuis le dump WordPress |
+| `tools/skins/<skin>/` | scripts qui génèrent les tracés SVG d'un skin (filigrane, ornements) |
 
 ## Thèmes (skins)
 
@@ -52,6 +53,8 @@ Ajouter un skin : créer `themes/<nom>/` sur ce modèle, puis l'ajouter à la li
 `kawaii` : fond rose pâle à pois, palette arc-en-ciel pastel, étoile du chaos multicolore derrière le logo et étincelles animées, menu en pastilles, cœur dans les séparateurs, pied de page festonné avec une étoile du chaos souriante. Polices Fredoka et Nunito, auto-hébergées elles aussi.
 
 `cthulhu` : abysses vert-de-mer et laiton terni, étoile du chaos tentaculaire avec un œil qui cligne en filigrane, bulles dans l'en-tête, tentacules qui émergent du pied de page, polices IM Fell English et Crimson Pro auto-hébergées (licence OFL). Les tracés des tentacules sont générés par calcul : les régénérer plutôt que les retoucher à la main. Les animations sont coupées si le visiteur a demandé à réduire les animations.
+
+`baphomet` : grimoire clair d'après le Baphomet d'Éliphas Lévi (1856). Fond de parchemin vergé avec des rousseurs aux coins, et une tête de bouc originale en traits fins en filigrane (étoile du chaos au front, flamme entre les cornes, lune blanche et lune noire), fixée au centre de la page. Encre brune, vermillon pour les liens et les rubriques, or terni pour le contour de focus. Un flambeau à la flamme vacillante au-dessus du logo, *Solve* et *Coagula* de part et d'autre du titre (à la verticale sur mobile), lettrine vermillon en début d'article, et un séparateur lune blanche, pentagramme pointe en haut, lune noire. Pied de page inversé, fond d'encre, avec un caducée planté dedans. Polices UnifrakturMaguntia (titre du site), Cormorant SC (titres, menu) et Spectral (texte), auto-hébergées (licence OFL). Le filigrane et les ornements sont générés par `tools/skins/baphomet/` (`python3 goat.py <dépôt>` et `python3 ornaments.py <dépôt>`) : les régénérer plutôt que les retoucher à la main. L'animation du flambeau est coupée si le visiteur a demandé à réduire les animations.
 
 ## Écrire un article
 

@@ -1,0 +1,26 @@
+/* Skin baphomet — valeurs du contrat de variables (chargé après themes/base/assets/css/tokens.css, qu'il complète) */
+:root {
+  color-scheme: light;
+  --color-bg: #efe6d2;          /* parchemin */
+  --color-surface: #e6dcc3;     /* vélin */
+  --color-text: #2a211a;        /* encre brune */
+  --color-text-muted: #5c4d3c;  /* sépia */
+  --color-heading: #120d09;     /* encre noire */
+  --color-accent: #9e2a1c;      /* vermillon des rubriques */
+  --color-accent-2: #7d5f17;    /* or terni : contour de focus clavier */
+  --color-link: #8f2418;        /* vermillon foncé, lisible sur le vélin */
+  --color-border: #c9b892;      /* filet de gravure */
+  --font-display: "UnifrakturMaguntia", "Old English Text MT", Georgia, serif;
+  --font-heading: "Cormorant SC", "Cormorant Garamond", Georgia, serif;
+  --font-body: "Spectral", Georgia, "Times New Roman", serif;
+  --radius: 2px;
+  --shadow: 0 1px 0 rgb(29 23 18 / .08), 0 6px 18px rgb(90 62 22 / .14);
+  --measure: 42rem;
+  --wide: 68rem;
+  /* Variables propres au skin */
+  --ink: #1d1712;               /* encre du pied de page, lune noire */
+  --vellum-light: #f8f2e4;      /* lune blanche, cadres d'images, formulaires */
+  --gold: #8a6a1f;              /* or terni : ailes et serpents du caducée, filets */
+  --flame: #d9a441;             /* cœur du flambeau, titres du pied de page */
+  --flame-core: #f6e3a4;        /* blanc de la flamme */
+}

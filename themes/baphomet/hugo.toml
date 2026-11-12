@@ -1,0 +1,10 @@
+# Ce skin s'appuie sur le socle commun : --theme baphomet suffit.
+theme = "base"
+
+# Déclaration du skin, fusionnée dans les params du site (voir base/layouts/_partials/skins.html)
+[params.skins.baphomet]
+  label = "Baphomet (grimoire)" # nom affiché dans le sélecteur
+  weight = 40                   # ordre dans le sélecteur
+  themeColor = "#efe6d2"        # couleur de la barre d'adresse sur mobile
+  colorScheme = "light"
+  preload = ["fonts/spectral-latin-400-normal.woff2", "fonts/unifrakturmaguntia-latin-400-normal.woff2"]

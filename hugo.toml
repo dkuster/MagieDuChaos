@@ -13,7 +13,7 @@ summaryLength = 45
 # Build avec un seul skin, sans sélecteur :
 #   hugo --theme kawaii
 #   hugo --theme base                (socle seul, sans habillage)
-theme = ["cthulhu", "chaos-dark", "kawaii" ]
+theme = ["cthulhu", "chaos-dark", "kawaii", "baphomet"]
 
 [params]
   description = "Site officiel francophone des Illuminates of Thanateros"
