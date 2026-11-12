@@ -1,5 +1,5 @@
 # Magie du Chaos — configuration Hugo
-baseURL = "https://magieduchaos.org/"
+baseURL = "https://dkuster.github.io/MagieDuChaos/"
 locale = "fr-FR"
 defaultContentLanguage = "fr"
 title = "Magie du Chaos"
