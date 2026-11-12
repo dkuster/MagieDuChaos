@@ -12,7 +12,7 @@ summaryLength = 45
 #   hugo --theme kawaii
 #   hugo --theme chaos-dark
 #   hugo --theme base                (socle seul, sans habillage)
-theme = "chaos-dark"
+theme = "kawaii"
 
 [params]
   description = "Site officiel francophone des Illuminates of Thanateros"
