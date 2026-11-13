@@ -5,7 +5,7 @@ date: 2026-11-13T12:00:00+01:00
 author: "White Raven"
 types: ["Pratique"]
 sources: ["Fait maison"]
-image: "illustration.jpg"
+# image: "illustration.jpg"
 ---
 
 # Introduction
